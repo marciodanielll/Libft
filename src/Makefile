@@ -18,13 +18,19 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 	@echo "Library $(NAME) created."
 
+# Rule to create executables for each test
+TEST_EXES = $(TEST_SRC:.c=)
+
+# Compile and run each test
+%: %.c $(UNITY_SRC) $(SRC)
+	@echo "Compiling and running tests for $@..."
+	$(CC) $(CFLAGS) -o $@ $< $(UNITY_SRC) $(SRC)
+	./$@
+	@echo "Cleaning up test executable $@..."
+	@rm -f $@
+
 # Run tests
-test: $(TEST_SRC) $(UNITY_SRC) $(SRC)
-	@echo "Compiling and running tests..."
-	$(CC) $(CFLAGS) -o test_runner $(TEST_SRC) $(UNITY_SRC) $(SRC)
-	./test_runner
-	@echo "Cleaning up..."
-	@rm -f test_runner
+test: $(TEST_EXES)
 
 # Clean object files
 clean:
@@ -33,8 +39,8 @@ clean:
 
 # Full clean
 fclean: clean
-	@echo "Removing $(NAME) and test_runner..."
-	rm -f $(NAME) test_runner
+	@echo "Removing $(NAME) and test executables..."
+	rm -f $(NAME) $(TEST_EXES)
 
 # Rebuild everything
 re: fclean $(NAME)
