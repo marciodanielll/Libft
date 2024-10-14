@@ -14,7 +14,7 @@ void test_ft_isprint_valid_chars(void)
     char start = 32;
     while (start <= 126)
     {
-        TEST_ASSERT_TRUE(ft_isprint(start), "Expected valid printable character");
+        TEST_ASSERT_TRUE(ft_isprint(start));
         start += 1;
     }
 }
@@ -24,7 +24,7 @@ void test_ft_isprint_invalid_chars(void)
     char start = 1;
     while (start <= 31)
     {
-        TEST_ASSERT_FALSE(ft_isprint(start), "Expected invalid non-printable character");
+        TEST_ASSERT_FALSE(ft_isprint(start));
         start += 1;
     }
 }
