@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 19:24:27 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 12:03:09 by mhermini         ###   ########.fr       */
+/*   Created: 2024/10/15 11:56:19 by mhermini          #+#    #+#             */
+/*   Updated: 2024/10/15 12:31:55 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	return ((c >= 97 && c <= 122) || (c >= 65 && c <= 90));
+	(void)big;
+	(void)little;
+	(void)len;
+	return (char *)(big);
 }
