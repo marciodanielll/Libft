@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:46:35 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 11:06:16 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:12:48 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ptr;
+	char	*last_occurrence;
 
-	ptr = (char *)'u';
-	(void)s;
-	(void)c;
-	return (ptr);
+	if (!s)
+		return (NULL);
+	last_occurrence = NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+			last_occurrence = (char *)s;
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (last_occurrence);
 }
