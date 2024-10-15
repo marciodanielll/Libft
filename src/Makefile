@@ -42,9 +42,11 @@ run_test:
 		rm -f test_runner; \
 	fi
 
-
-# Run tests
+# Run all tests
 test: $(TEST_EXES)
+
+# Rule for all: build the library and run tests
+all: $(NAME) clean
 
 # Clean object files
 clean:
@@ -60,4 +62,4 @@ fclean: clean
 re: fclean $(NAME)
 
 # Mark rules as phony
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test run_test
