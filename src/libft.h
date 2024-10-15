@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:34:18 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 14:39:49 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:43:39 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 #endif /*LIBFT_H*/
 
