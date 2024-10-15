@@ -3,7 +3,7 @@
 
 ## 🚀 Build and Start the Container
 ```bash
-docker-compose up --build
+docker-compose up --build -d
 ```
 - Builds the image and starts the `c_dev_container`.
 
