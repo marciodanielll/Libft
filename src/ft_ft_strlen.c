@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:35:28 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/14 20:40:54 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/14 21:17:16 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	(void)s;
-	return (10);
+	size_t	len;
+
+	len = 0;
+	while (*s++)
+		len++;
+	return (len);
 }
