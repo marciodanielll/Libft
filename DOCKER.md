@@ -36,9 +36,5 @@ docker exec -it c_dev_container /bin/bash
 ```
 |-- Dockerfile
 |-- docker-compose.yml
-|-- workspace/  # Mapped to /workspace in the container
+|...
 ```
-
-## 🛠️ Tips
-- Ensure **Docker** and **Docker Compose** are installed.
-- Files in **workspace/** are accessible at `/workspace` in the container.
