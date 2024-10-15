@@ -29,6 +29,20 @@ TEST_EXES = $(TEST_SRC:.c=)
 	@echo "Cleaning up test executable $@..."
 	@rm -f $@
 
+# Run the specified test or all tests if no test file is specified
+run_test:
+	@if [ -z "$(test_file)" ]; then \
+		echo "No test specified. Running all tests..."; \
+		$(MAKE) test; \
+	else \
+		echo "Running test: $(test_file)..."; \
+		$(CC) $(CFLAGS) -o test_runner $(UNITY_SRC) $(SRC) $(TEST_DIR)/$(test_file); \
+		./test_runner; \
+		echo "Cleaning up test executable..."; \
+		rm -f test_runner; \
+	fi
+
+
 # Run tests
 test: $(TEST_EXES)
 
