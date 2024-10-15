@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:34:18 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 14:52:59 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:58:50 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ int		ft_tolower(int c);
 #endif /*LIBFT_H*/
 
 /* 
-atoi -
-bzero -
-isalnum
-isalpha
-isascii
-isdigit
-isprint
-memchr -
-memcmp -
-memcpy -
-memmove -
-memset -
-strchr
-strlcat
-strlcpy
-strlen
-strncmp
-strnstr
-strrchr
-tolower
-toupper
+ft_atoi -
+ft_bzero -
+ft_isalnum
+ft_isalpha
+ft_isascii
+ft_isdigit
+ft_isprint
+ft_memchr -
+ft_memcmp -
+ft_memcpy -
+ft_memmove -
+ft_memset -
+ft_strchr
+ft_strlcat
+ft_strlcpy
+ft_strlen
+ft_strncmp
+ft_strnstr
+ft_strrchr
+ft_tolower
+ft_toupper
 */
