@@ -10,18 +10,20 @@ void	tearDown(void)
 
 void	test_ft_isascii_valid_digits(void)
 {
-    int start = 1;
-    while(start <=126)
-    {
-        TEST_ASSERT_TRUE(ft_isascii(start));
-        start++;
-    }
+	int	start;
+
+	start = 0;
+	while (start <= 127)
+	{
+		TEST_ASSERT_TRUE(ft_isascii(start));
+		start++;
+	}
 }
 
 void	test_ft_isascii_valid_invalids(void)
 {
-    TEST_ASSERT_FALSE(ft_isascii(-10));
-    TEST_ASSERT_FALSE(ft_isascii(-127));
+	TEST_ASSERT_FALSE(ft_isascii(-1));
+	TEST_ASSERT_FALSE(ft_isascii(128));
 }
 
 int	main(void)

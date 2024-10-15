@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "libft.h": "c",
-        "unity.h": "c"
+        "unity.h": "c",
+        "stddef.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

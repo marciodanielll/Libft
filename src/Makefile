@@ -31,12 +31,12 @@ TEST_EXES = $(TEST_SRC:.c=)
 
 # Run the specified test or all tests if no test file is specified
 run_test:
-	@if [ -z "$(test_file)" ]; then \
+	@if [ -z "$(file)" ]; then \
 		echo "No test specified. Running all tests..."; \
 		$(MAKE) test; \
 	else \
-		echo "Running test: $(test_file)..."; \
-		$(CC) $(CFLAGS) -o test_runner $(UNITY_SRC) $(SRC) $(TEST_DIR)/$(test_file); \
+		echo "Running test: $(file)..."; \
+		$(CC) $(CFLAGS) -o test_runner $(UNITY_SRC) $(SRC) $(TEST_DIR)/$(file); \
 		./test_runner; \
 		echo "Cleaning up test executable..."; \
 		rm -f test_runner; \
