@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  c_dev_container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: c_dev_container
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: /bin/bash

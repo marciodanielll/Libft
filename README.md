@@ -18,7 +18,7 @@ int ft_atoi(const char *str);
 ```
 
 ### Business Rules:
-
+run_test
 1. **Input Validation:**  
    - The function accepts a string `str` that should contain a sequence of characters representing a number.
 
