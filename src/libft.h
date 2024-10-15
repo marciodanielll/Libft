@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:34:18 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 14:11:54 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:27:06 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,26 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 #endif /*LIBFT_H*/
+
+/* atoi
+bzero
+isalnum
+isalpha
+isascii
+isdigit
+isprint
+memchr -
+memcmp -
+memcpy -
+memmove -
+memset -
+strchr
+strlcat
+strlcpy
+strlen
+strncmp
+strnstr
+strrchr
+tolower -
+toupper - 
+*/
