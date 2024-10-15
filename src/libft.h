@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:34:18 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 14:43:39 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:52:59 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int		ft_tolower(int c);
 
 #endif /*LIBFT_H*/
 
-/* atoi
-bzero
+/* 
+atoi -
+bzero -
 isalnum
 isalpha
 isascii
@@ -51,6 +52,6 @@ strlen
 strncmp
 strnstr
 strrchr
-tolower -
-toupper -
+tolower
+toupper
 */
