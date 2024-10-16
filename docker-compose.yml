@@ -10,5 +10,9 @@ services:
     tty: true
     volumes:
       - .:/workspace
+      - .zshrc:/root/.zshrc
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.git:/root/.git
+      - ~/.ssh:/root/.ssh
     working_dir: /workspace
-    command: /bin/zsh
+    entrypoint: [ "sh", "-c", "zsh" ]

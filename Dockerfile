@@ -24,7 +24,8 @@ RUN apt-get update && apt-get upgrade -y && \
     git-core \
     openssh-client \
     lsb-release \
-    ca-certificates && \
+    ca-certificates \
+    tree && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
@@ -45,16 +46,15 @@ RUN echo "root ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN sudo zsh -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)"
 
+RUN rm -rf /root/.oh-my-zsh && \
+    zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 
-RUN zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended" && \
-    echo 'alias francinette="source /root/francinette/venv/bin/activate && python /root/francinette/main.py"' >> /root/.zshrc
+RUN git clone https://github.com/spaceship-prompt/spaceship-prompt.git \
+    /root/.oh-my-zsh/custom/themes/spaceship-prompt --depth=1 && \
+    ln -s /root/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme \
+    /root/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
-RUN /root/francinette/venv/bin/pip install gitpython
-
-#RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+RUN sudo zsh -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 RUN mkdir -p /workspace && chmod -R 777 /workspace
-
 WORKDIR /workspace
-
-CMD ["zsh"]
