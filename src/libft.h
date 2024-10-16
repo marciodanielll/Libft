@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:34:18 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/15 15:46:52 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:49:45 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 
-int		ft_atoi(const char *nptr);
+int		ft_atoi(const char *str);
 
 #endif /*LIBFT_H*/
 

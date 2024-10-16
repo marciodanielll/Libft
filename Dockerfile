@@ -16,9 +16,11 @@ RUN apt-get update && apt-get upgrade -y && \
     curl \
     vim \
     nano \
-    sudo && \
+    git \
+    zsh && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Instalação de pacotes Python
 RUN pip3 install \
     attrs==19.3.0 \
     autobahn==17.10.1 \
@@ -32,7 +34,11 @@ RUN pip3 install \
     setuptools==45.2.0 \
     wheel==0.34.2
 
-RUN useradd -m -s /bin/bash devuser && echo "devuser:password" | chpasswd && \
-    usermod -aG sudo devuser
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+RUN mkdir -p /workspace && \
+    chmod -R 777 /workspace
 
 WORKDIR /workspace
+
+CMD ["zsh"]
