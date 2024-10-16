@@ -9,6 +9,6 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - .:/workspace:cached
+      - .:/workspace
     working_dir: /workspace
     command: /bin/zsh

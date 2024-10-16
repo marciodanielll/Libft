@@ -4,6 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
+    sudo \
+    debianutils \ 
     gcc=4:9.3.0-1ubuntu2 \
     clang \
     make=4.2.1-1.2 \
@@ -12,15 +14,19 @@ RUN apt-get update && apt-get upgrade -y && \
     python3 \
     python3-pip \
     python3-dev=3.8.2-0ubuntu2 \
+    python3-venv \
     build-essential \
     curl \
     vim \
     nano \
     git \
-    zsh && \
+    zsh \
+    git-core \
+    openssh-client \
+    lsb-release \
+    ca-certificates && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Instalação de pacotes Python
 RUN pip3 install \
     attrs==19.3.0 \
     autobahn==17.10.1 \
@@ -32,12 +38,22 @@ RUN pip3 install \
     norminette==3.3.51 \
     requests==2.22.0 \
     setuptools==45.2.0 \
-    wheel==0.34.2
+    wheel==0.34.2 \
+    gitpython
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+RUN echo "root ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-RUN mkdir -p /workspace && \
-    chmod -R 777 /workspace
+RUN sudo zsh -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)"
+
+
+RUN zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended" && \
+    echo 'alias francinette="source /root/francinette/venv/bin/activate && python /root/francinette/main.py"' >> /root/.zshrc
+
+RUN /root/francinette/venv/bin/pip install gitpython
+
+#RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+
+RUN mkdir -p /workspace && chmod -R 777 /workspace
 
 WORKDIR /workspace
 
