@@ -5,6 +5,7 @@
 
 - [ft_atoi](#ft_atoi)
 - [ft_toupper](#ft_toupper)
+- [ft_strlcpy](#ft_strlcpy)
 
 ---
 
@@ -23,7 +24,7 @@ run_test
    - The function accepts a string `str` that should contain a sequence of characters representing a number.
 
 2. **Behavior:**  
-   - Skips any leading whitespace characters (such as spaces, tabs, or newlines).
+   - Skips any leadingft_strlcpy whitespace characters (such as spaces, tabs, or newlines).
    - Recognizes an optional '+' or '-' sign to determine the sign of the number.
    - Converts consecutive numeric characters (`'0'` to `'9'`) to an integer until a non-numeric character is encountered.
    - If the string does not contain valid numeric characters, the result will be `0`.
@@ -32,25 +33,6 @@ run_test
    - Returns the integer value corresponding to the parsed numeric part of the string.
    - The sign of the number is determined by the presence of a '+' or '-' sign.
    - If the number exceeds the limits of `int`, behavior may vary depending on implementation (e.g., overflow may wrap around).
-
-### Exceptions and Edge Cases:
-
-1. **Non-numeric Characters:**  
-   - If the string starts with non-numeric characters without any digits following, the function returns `0`.
-
-2. **Whitespace Handling:**  
-   - Any leading whitespaces are ignored until the first non-whitespace character is encountered.
-
-3. **Sign Handling:**  
-   - If both '+' and '-' appear before the number, only the first is considered valid.
-
-4. **Overflow and Underflow:**  
-   - If the parsed number exceeds the `int` limits (e.g., 2147483647 or -2147483648), the behavior may be undefined, often resulting in wrap-around values.
-
-5. **Empty String:**  
-   - If the input string is empty or contains only whitespaces, the function returns `0`.
-
----
 
 ## ft_toupper
 
@@ -74,16 +56,29 @@ int ft_toupper(int c);
    - If the input is a lowercase letter, the function returns the corresponding uppercase letter's ASCII value.
    - If no conversion is needed, it returns the original input.
 
-### Exceptions and Edge Cases:
+# ft_strlcpy
 
-1. **Non-alphabetic Characters:**  
-   - If the input is a number, symbol, or any non-letter character, the function returns the input unchanged.
+The `ft_strlcpy` function copies a string from the source (`src`) to the destination buffer (`dst`), ensuring that the destination buffer is null-terminated to prevent overflow. It copies at most `size - 1` characters, ensuring space for the null terminator. The function returns the total length of the source string (`src`), regardless of whether truncation occurred.
 
-2. **Uppercase Letters:**  
-   - If the input is already an uppercase letter, it is returned without modification.
+## Signature:
+```c
+size_t ft_strlcpy(char *dst, const char *src, size_t size);
+```
 
-3. **Non-ASCII Input:**  
-   - If the input value is not within the ASCII range (e.g., extended UTF-8 characters), the behavior is undefined.
+## Business Rules:
 
-4. **Input Limits:**  
-   - Negative values or values greater than 127 might cause unexpected behavior, and the caller is responsible for ensuring valid input.
+### 1. Input Validation:
+   - The function accepts three arguments:
+     - `dst`: A pointer to the destination buffer where the string will be copied.
+     - `src`: A pointer to the source string to be copied.
+     - `size`: The total size of the destination buffer, including space for the null-terminator (`\0`).
+
+### 2. Behavior:
+   - Copies up to `size - 1` characters from the source string (`src`) to the destination buffer (`dst`), ensuring that the destination is null-terminated.
+   - If `size` is 0, it does not copy any characters but still calculates the length of the source string (`src`).
+   - If the source string is longer than `size - 1`, the string will be truncated in the destination buffer, but it will always be null-terminated.
+   - The function does not allocate memory; it assumes that the caller has provided a valid destination buffer with the appropriate size.
+
+### 3. Output:
+   - The function returns the total length of the source string (`src`), which is the length the function would have tried to copy, regardless of truncation.
+   - If the return value is greater than or equal to `size`, it means that truncation occurred.
