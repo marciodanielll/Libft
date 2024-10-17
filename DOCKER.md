@@ -5,36 +5,25 @@
 ```bash
 docker-compose up --build -d
 ```
-- Builds the image and starts the `c_dev_container`.
-
-## 🖥️ Attach Container via Bash
+## 🖥️ Attach Container via Shell
 ```bash
 docker attach c_dev_container 
 ```
-
-## 🖥️ Access the Container via Bash
+## 🖥️ Star Container via Shell
+```bash 
+docker-compose start c_dev_container
+```
+## 🖥️ Access the Container via Shell
 ```bash
-docker exec -it c_dev_container /bin/bash
+docker exec -it c_dev_container /bin/zsh
 ```
-- Opens an interactive Bash terminal in the container.
 
-## 📌 Useful Commands
-- **Stop:**  
-  ```bash
-  docker-compose down
-  ```
-- **Restart:**  
-  ```bash
-  docker-compose up
-  ```
-- **Logs:**  
-  ```bash
-  docker logs c_dev_container
-  ```
+## 🖥️ Remove All Containers via Shell
+```bash
+docker container rm $(docker container ls -a -q) -f
+```
+## 🖥️ Remove All Images via Shell
+```bash
+docker image rm $(docker image ls -q)
+```
 
-## 📂 Project Structure
-```
-|-- Dockerfile
-|-- docker-compose.yml
-|...
-```

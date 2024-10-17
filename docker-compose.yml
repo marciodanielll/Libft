@@ -11,8 +11,8 @@ services:
     volumes:
       - .:/workspace
       - .zshrc:/root/.zshrc
-      - ~/.gitconfig:/root/.gitconfig
-      - ~/.git:/root/.git
-      - ~/.ssh:/root/.ssh
+      - .gitconfig:/root/.gitconfig
+      - .git:/root/.git
+      - .ssh:/root/.ssh
     working_dir: /workspace
     entrypoint: [ "sh", "-c", "zsh" ]
