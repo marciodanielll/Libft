@@ -15,4 +15,4 @@ services:
       - .git:/root/.git
       - .ssh:/root/.ssh
     working_dir: /workspace
-    entrypoint: [ "sh", "-c", "zsh" ]
+    command: zsh
