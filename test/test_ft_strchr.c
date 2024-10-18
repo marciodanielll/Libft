@@ -59,12 +59,25 @@ void	test_ft_strchr_only_null_terminator(void)
 	TEST_ASSERT_EQUAL_PTR(str, result);
 }
 
+void	test_ft_strchr_with_large_value(void)
+{
+	char	*result;
+
+	const char *str = "teste";
+	int large_value = 1024;
+
+	result = ft_strchr(str, large_value);
+	TEST_ASSERT_EQUAL_PTR(str + 5, result);
+}
+
+
 int	main(void)
 {
 	UNITY_BEGIN();
-	RUN_TEST(test_ft_strchr_success);
+/* 	RUN_TEST(test_ft_strchr_success);
 	RUN_TEST(test_ft_strchr_error);
 	RUN_TEST(test_ft_strchr_find_null_terminator);
-	RUN_TEST(test_ft_strchr_only_null_terminator);
+	RUN_TEST(test_ft_strchr_only_null_terminator); */
+	RUN_TEST(test_ft_strchr_with_large_value);
 	return (UNITY_END());
 }

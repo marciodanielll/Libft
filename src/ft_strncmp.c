@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:46:25 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/17 21:20:04 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/17 22:12:34 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (!s1 || !s2)
-		return (-1);
 	if (n == 0)
 		return (0);
 	while (*s1 != '\0' && *s2 != '\0' && n)
