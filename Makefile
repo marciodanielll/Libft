@@ -1,20 +1,24 @@
 NAME=libft.a
-CC=cc -Wall -Wextra -Werror
-SRC=*.c
-OBJ=*.o
+CC=cc
+CFLAGS=-Wall -Wextra -Werror
+SRC=$(shell find . -maxdepth 1 -name "*.c" | tr ' ' '\n')
+OBJ=$(SRC:.c=.o)
 
-all:
-	@ $(CC) -c $(SRC)
+all: $(NAME)
+
+$(NAME): $(OBJ)
 	@ ar rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
 
+%.o: %.c
+	@ $(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	@ rm -rf *.o
+	@ rm -rf $(OBJ)
 
 fclean: clean
 	@ rm -rf $(NAME)
 
 re: fclean all
-	@echo "hello"
 
 .PHONY: all clean fclean re
