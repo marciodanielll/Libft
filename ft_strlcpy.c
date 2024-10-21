@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:29:12 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/21 16:12:39 by mhermini         ###   ########.fr       */
+/*   Created: 2024/10/21 15:57:25 by mhermini          #+#    #+#             */
+/*   Updated: 2024/10/21 16:28:20 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stddef.h>
+#include "libft.h"
 
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	len_src;
 
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-
-#endif /* LIBFT_H */
+	len_src = ft_strlen(src);
+	if (!size)
+		return (len_src);
+	if (size > 0)
+	{
+		while (*src != '\0' && --size)
+			*dst++ = *src++;
+	}
+	*dst = '\0';
+	return (len_src);
+}
