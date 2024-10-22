@@ -5,20 +5,26 @@ SRC=$(shell find . -maxdepth 1 -name "*.c" | tr ' ' '\n')
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
+	@ echo "\033[0;32mCompilation complete: $(NAME) created!\033[0m"
 
 $(NAME): $(OBJ)
-	@ ar rc $(NAME) $(OBJ)
-	@ ranlib $(NAME)
+	@ ar rcs $(NAME) $(OBJ)
+	@ echo "\033[0;32mObject files archived in $(NAME)!\033[0m"
 
-%.o: %.c
+%.o: %.c libft.h
 	@ $(CC) $(CFLAGS) -c $< -o $@
+	@ echo "\033[0;33mCompiled $< into $@!\033[0m"
 
 clean:
-	@ rm -rf $(OBJ)
+	@ rm -f $(OBJ)
+	@ echo "\033[0;32mObject files removed!\033[0m"
 
 fclean: clean
-	@ rm -rf $(NAME)
+	@ rm -f $(NAME)
+	@ echo "\033[0;32m$(NAME) removed!\033[0m"
 
-re: fclean all
+re:
+	@ $(MAKE) -s fclean && $(MAKE) -s all
+	@ echo "\033[0;32mRecompilation complete!\033[0m"
 
 .PHONY: all clean fclean re
