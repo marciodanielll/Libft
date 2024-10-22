@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:12 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/21 22:32:16 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/21 22:46:07 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int		ft_tolower(int c);
 void	*ft_calloc(size_t nmemb, size_t size);
 
 char	*ft_strdup(const char *s);
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif /* LIBFT_H */
