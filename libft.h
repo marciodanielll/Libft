@@ -6,7 +6,7 @@
 /*   By: md <md@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:12 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/22 05:10:35 by md               ###   ########.fr       */
+/*   Updated: 2024/10/22 08:58:01 by md               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ char	*ft_strdup(const char *s);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif /* LIBFT_H */
