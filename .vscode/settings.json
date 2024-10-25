@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "libft.h": "c",
-        "stddef.h": "c",
-        "ft_calloc": "cpp"
-    }
-}
