@@ -1,8 +1,10 @@
 NAME=libft.a
 CC=cc
 CFLAGS=-Wall -Wextra -Werror
-SRC=$(shell find . -maxdepth 1 -name "*.c" | tr ' ' '\n')
+SRC=$(shell find . -maxdepth 1 -name "*.c" ! -name "*_bonus.c" | tr ' ' '\n')
 OBJ=$(SRC:.c=.o)
+SRC_BONUS=$(shell find . -maxdepth 1 -name "*_bonus.c" | tr ' ' '\n')
+OBJ_BONUS=$(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 	@ echo "\033[0;32mCompilation complete: $(NAME) created!\033[0m"
@@ -26,5 +28,9 @@ fclean: clean
 re:
 	@ $(MAKE) -s fclean && $(MAKE) -s all
 	@ echo "\033[0;32mRecompilation complete!\033[0m"
+
+bonus: $(OBJ) $(OBJ_BONUS)
+	@ ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+	@ echo "\033[0;32mObject files archived in $(NAME)!\033[0m"
 
 .PHONY: all clean fclean re
