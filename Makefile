@@ -20,6 +20,8 @@ $(NAME): $(OBJ)
 clean:
 	@ rm -f $(OBJ)
 	@ echo "\033[0;32mObject files removed!\033[0m"
+	@ rm -f $(OBJ_BONUS)
+	@ echo "\033[0;32mBonus object files removed!\033[0m"
 
 fclean: clean
 	@ rm -f $(NAME)
@@ -29,8 +31,8 @@ re:
 	@ $(MAKE) -s fclean && $(MAKE) -s all
 	@ echo "\033[0;32mRecompilation complete!\033[0m"
 
-bonus: $(OBJ) $(OBJ_BONUS)
-	@ ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
-	@ echo "\033[0;32mObject files archived in $(NAME)!\033[0m"
+bonus: $(OBJ_BONUS)
+	@ ar rcs $(NAME) $(OBJ_BONUS)
+	@ echo "\033[0;32mBonus object files archived in $(NAME)!\033[0m"
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
