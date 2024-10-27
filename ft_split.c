@@ -3,55 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: md <md@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 08:12:41 by md                #+#    #+#             */
-/*   Updated: 2024/10/22 18:41:03 by md               ###   ########.fr       */
+/*   Updated: 2024/10/27 17:14:07 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	handle_count(const char *s, char c)
+static size_t	count_chunks(const char *str, char delimiter)
 {
-	size_t	count;
-	int		in_word;
+	size_t	chunk;
+	int		is_inside_word;
 
-	count = 0;
-	in_word = 0;
-	while (*s)
+	chunk = 0;
+	is_inside_word = 0;
+	while (*str)
 	{
-		if (*s != c && !in_word)
+		if (*str != delimiter && !is_inside_word)
 		{
-			in_word = 1;
-			count++;
+			is_inside_word = 1;
+			chunk++;
 		}
-		else if (*s == c)
-			in_word = 0;
-		s++;
+		else if (*str == delimiter)
+			is_inside_word = 0;
+		str++;
 	}
-	return (count);
+	return (chunk);
 }
 
 static char	*get_next_word(const char *s, char c)
 {
-	size_t	len;
+	size_t	index;
 
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	return (ft_substr(s, 0, len));
+	index = 0;
+	while (s[index] && s[index] != c)
+		index++;
+	return (ft_substr(s, 0, index));
 }
 
-static void	free_words(char **words, size_t i)
+static void	free_memory(char ***word_chunks, int allocated)
 {
-	while (--i)
-		free(words[i]);
-	free(words);
+	char	**current;
+
+	if (!word_chunks || !*word_chunks)
+		return ;
+	current = *word_chunks;
+	while (allocated--)
+	{
+		free(*current);
+		current++;
+	}
+	free(*word_chunks);
+	*word_chunks = NULL;
 }
 
-static int	fill(char **words, const char *s, char c)
+static int	fill(char **word_chunks, const char *s, char c)
 {
 	size_t	i;
 
@@ -62,10 +71,10 @@ static int	fill(char **words, const char *s, char c)
 			s++;
 		if (*s)
 		{
-			words[i] = get_next_word(s, c);
-			if (!words[i])
+			word_chunks[i] = get_next_word(s, c);
+			if (!word_chunks[i])
 			{
-				free_words(words, i);
+				free_memory(&word_chunks, i);
 				return (0);
 			}
 			i++;
@@ -73,22 +82,22 @@ static int	fill(char **words, const char *s, char c)
 				s++;
 		}
 	}
-	words[i] = '\0';
+	word_chunks[i] = NULL;
 	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**words;
-	size_t	word_count;
+	char	**word_chunks;
+	size_t	chunks;
 
 	if (!s)
 		return (NULL);
-	word_count = handle_count(s, c);
-	words = (char **)ft_calloc(word_count + 1, sizeof(char *));
-	if (!words)
+	chunks = count_chunks(s, c);
+	word_chunks = (char **)ft_calloc(chunks + 1, sizeof(char *));
+	if (!word_chunks)
 		return (NULL);
-	if (!fill(words, s, c))
+	if (!fill(word_chunks, s, c))
 		return (NULL);
-	return (words);
+	return (word_chunks);
 }
