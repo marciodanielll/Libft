@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 22:31:59 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/21 22:41:38 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:34:07 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strdup(const char *s)
 	if (!dup)
 		return (NULL);
 	original_dup = dup;
-	while (total_size--)
+	while (--total_size)
 		*dup++ = *s++;
 	*dup = '\0';
 	return (original_dup);
