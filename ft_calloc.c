@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 22:03:35 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/21 22:29:42 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:24:28 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*ptr;
 	size_t	total_size;
 
+	if (nmemb && (size > (((size_t)-1) / nmemb)))
+		return (NULL);
 	total_size = nmemb * size;
 	ptr = malloc(total_size);
 	if (!ptr)
