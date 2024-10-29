@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 22:31:59 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/28 11:34:07 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/28 21:31:16 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 	char	*original_dup;
 	size_t	total_size;
 
-	total_size = (ft_strlen(s) + 1) * sizeof(s[0]);
+	total_size = (ft_strlen(s) + 1) * sizeof(char);
 	dup = malloc(total_size);
 	if (!dup)
 		return (NULL);

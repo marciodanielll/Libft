@@ -1,4 +1,4 @@
 libft.a
 *.o
 .vscode
-libftTester
+libftTester/

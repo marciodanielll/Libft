@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 22:45:44 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/21 23:07:19 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/28 21:29:21 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len > s_len - start)
 		len = s_len - start;
-	total_size = (len + 1) * sizeof(s[0]);
+	total_size = (len + 1) * sizeof(char);
 	ptr = malloc(total_size);
 	if (!ptr)
 		return (NULL);
