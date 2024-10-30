@@ -6,7 +6,7 @@
 /*   By: mhermini <mhermini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 19:11:03 by mhermini          #+#    #+#             */
-/*   Updated: 2024/10/28 20:51:46 by mhermini         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:27:50 by mhermini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*ptr;
 	t_list	*new_elem;
-	void	*content;
+	t_list	*content;
 
 	ptr = NULL;
 	if (!lst || !f)
